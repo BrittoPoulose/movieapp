@@ -1,0 +1,11 @@
+<form method="GET" action="{% url 'movie_app:search_movies' %}">
+    <input type="text" name="q" placeholder="Search...">
+    <button type="submit">Search</button>
+</form>
+
+{% for movie in movies %}
+    <h2>{{ movie.name }}</h2>
+    <p>{{ movie.actor }}</p>
+    <p>{{ movie.description }}</p>
+    <img src="{{ movie.poster.url }}" alt="{{ movie.name }}">
+{% endfor %}

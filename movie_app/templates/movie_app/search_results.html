@@ -1,0 +1,39 @@
+<!-- movie_app/templates/movie_app/search_results.html -->
+
+<!DOCTYPE html>
+<html lang="english">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    
+    <!-- Display the search query -->
+    {% if query %}
+        <p>Showing results for: "{{ query }}"</p>
+    {% else %}
+        <p>No search query provided.</p>
+    {% endif %}
+
+    <!-- Display search results -->
+    {% if movies %}
+        <ul>
+            {% for movie in movies %}
+                <!-- <li>{{ movie.name }}</li> -->
+                <!-- <li>{{ movie.actor }}</li> -->
+                <!-- <li>{{ movie.description }}</li> -->
+                <img src="{{ movie.poster.url }}" alt="{{ movie.name }}">
+
+
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movies found.</p>
+    {% endif %}
+    
+    <!-- Link back to the search form -->
+    <a href="{% url 'movie_app:search_movies' %}">Back to Search</a>
+</body>
+</html>
