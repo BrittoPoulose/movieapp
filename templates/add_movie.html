@@ -70,53 +70,90 @@
         </div>
 
 
-<form action="/login/" method="post" >
-  <table>
-{% csrf_token %}
-<tr><td></td><td><h1>LOGIN</h1></td></tr>
-<tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr><tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr><tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-<tr><td>
-    <h4> Username</h4></td><td><input type="text" name="username" placeholder="Enter your  username"></td><br></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td><h4>Password</h4></td><td><input type="password" name="password" placeholder="Enter the password"></td><br></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td><input type="submit"></td></tr>
-{% if message %}
-<tr><td><p>{{ message }}</p></td></tr>
-{% endif %}
-</form>
 
-</table>
-<table>
-
-<tr><td>If you don't have account <a href="{% url 'movie_app:registrations' %}"><button type="button">REGISTER</button></a></td></tr><br>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-
-<tr><td>Admin login <a href="{% url 'movie_app:admin_login' %}"><button type="button">ADMIN LOGIN</button></a></td></tr>
+        <!-- <form method="POST" enctype="multipart/form-data" action="{% url 'movie_app:add_movie' %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Submit</button>
+      </form> -->
 
 
-</table>
+<center><h1>ADD MOVIES</h1></center>
+      <form method="post" enctype="multipart/form-data" action="{% url 'movie_app:add_movie' %}">
+        {% csrf_token %}
+        <table>
+          <tr><td>
+        <label for="id_name">Name:</label></td>
+        <td>
+        <input type="text" id="id_name" name="name" maxlength="100" required></td>
+      </tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+
+      <tr><td>
+        <label for="id_actor">Actor:</label></td><td>
+        <input type="text" id="id_actor" name="actor" maxlength="100" required></td>
+      </tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td>
+        <label for="id_description">Description:</label></td>
+        <td>
+        <textarea id="id_description" name="description" required></textarea></td>
+      </tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td>
+        <label for="id_poster">Poster:</label></td><td>
+        <input type="file" id="id_poster" name="poster" accept="image/*" required></td>
+      </tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td><label for="id_poster">Status</label></td><td>
+      <select id="theater" name="theater">
+        <option value="CS">Coming Soon</option>
+        <option value="IT">In Theater</option>
+        <option value="OT">Out of Theater</option>
+    </select>
+  </td></tr><br>
+    <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+
+      <tr><td><label for="id_poster">Status</label></td><td>
+
+        <select name="category" id="category">
+          <option value="" disabled selected>Choose the category</option>
+          {% for item in category %}
+              <option value="{{ item.id }}">{{ item.category }}</option>
+          {% endfor %}
+      </select>
+  </td></tr><br>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td>
+  <label for="release_date">Trailer Link:</label></td><td>
+  <input type="text" id="release_date" name="trailer_link">
+</td></tr>
+    <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td>
+      <label for="release_date">Release Date:</label></td><td>
+      <input type="date" id="release_date" name="rdate">
+    </td></tr>
+      <tr><td>
+       
+        <button type="submit">Submit</button></td></tr>
+      </table>
+    </form>
+
+
 <div class="cl">&nbsp;</div>
 </div>
 <div id="footer">

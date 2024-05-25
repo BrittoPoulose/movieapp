@@ -31,12 +31,12 @@
         <!-- <li><a href="#">COMING SOON</a></li> -->
         <!-- <li><a href="#">CATEGORY</a></li> -->
         <!-- <li><a href="#">TRAILERS</a></li> -->
-        <li><select name="category" id="category" onchange="if (this.value) window.location.href=this.value;">
+        <!-- <li><select name="category" id="category" onchange="if (this.value) window.location.href=this.value;">
           <option value="" disabled selected>CATEGORY</option>
           {% for item in category %}
          <option value="{% url 'movie_app:category_result' item.id %}">{{ item.category }}</option>
           {% endfor %}
-      </select></li>
+      </select></li> -->
         <li><a href="{% url 'movie_app:login' %}">REGISTER/LOGIN</a></li>
         <!-- <li><a href="{% url 'movie_app:add_movie' %}">ADD MOVIES</a></li> -->
 
@@ -69,22 +69,22 @@
           <p class="text-right"><a href="#">See all</a></p>
         </div>
 
-        {% for movie in movies %}
-
-        <div class="movie">
-            <div class="movie-image"> <span class="play"><span class="name">{{ movie.name }}</span></span> <a href="#"><img src="{{ movie.poster.url }}" alt="{{ movie.name }}"></a> </div>
-            <p class="name">{{ movie.name }}</p>
-            <p class="name">{{ movie.actor }}</p>
-            <p class="name">{{ movie.description}}</p>
-            <div class="rating">
-              <p>RATING</p>
-              <div class="stars">
-                <div class="stars-in"> </div>
-              </div>
-              <a href="{% url 'movie_app:reviews2' movie.id %}">
-              <span class="comments"> .   </span></a> </div>
-          </div>
-          {% endfor %}
+        <table>
+          <tr>
+            {% for movie in movies %}
+              <td>
+                <div class="video-item">
+                  <iframe src="https://www.youtube.com/embed/{{ movie.trailer_link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <h2>{{ movie.name }}</h2>
+                </div>
+              </td>
+              {% if forloop.counter|divisibleby:3 and not forloop.last %}
+          </tr>
+          <tr>
+              {% endif %}
+            {% endfor %}
+          </tr>
+        </table>
 <!--    <div id="news">-->
 <!--      <div class="head">-->
 <!--        <h3>NEWS</h3>-->

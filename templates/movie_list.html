@@ -1,11 +1,110 @@
-<form method="GET" action="{% url 'movie_app:search_movies' %}">
-    <input type="text" name="q" placeholder="Search...">
-    <button type="submit">Search</button>
-</form>
+{% load static %}
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>MovieHunter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+<script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery-func.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/ie6.css' %}" type="text/css" media="all" />
+</head>
+<body>
+<!-- START PAGE SOURCE -->
+<div id="shell">
+  <div id="header">
+    <h1 id="logo"><a href="{% url 'movie_app:index' %}">MovieHunter</a></h1>
+    <div class="social"> <span>FOLLOW US ON:</span>
+      <ul>
+        <li><a class="twitter" href="#">twitter</a></li>
+        <li><a class="facebook" href="#">facebook</a></li>
+        <li><a class="vimeo" href="#">video</a></li>
+        <li><a class="rss" href="#">rss</a></li>
+      </ul>
+    </div>
+    <div id="navigation">
+      <ul>
+        <li><a class="active" href="{% url 'movie_app:index' %}">HOME</a></li>
+        <li><a href="{% url 'movie_app:reviews' %}">REVIEW</a></li>
+        <!-- <li><a href="#">IN THEATERS</a></li> -->
+        <!-- <li><a href="#">COMING SOON</a></li> -->
+        <!-- <li><a href="#">CATEGORY</a></li> -->
+        <!-- <li><a href="#">TRAILERS</a></li> -->
+        <!-- <li><select name="category" id="category" onchange="if (this.value) window.location.href=this.value;">
+          <option value="" disabled selected>CATEGORY</option>
+          {% for item in category %}
+         <option value="{% url 'movie_app:category_result' item.id %}">{{ item.category }}</option>
+          {% endfor %}
+      </select></li> -->
+        <li><a href="{% url 'movie_app:login' %}">REGISTER/LOGIN</a></li>
+        <!-- <li><a href="{% url 'movie_app:add_movie' %}">ADD MOVIES</a></li> -->
+
+
+      </ul>
+    </div>
+    <div id="sub-navigation">
+      <ul>
+        <!-- <li><a href="#">SHOW ALL</a></li> -->
+        <li><a href="{% url 'movie_app:trailer' %}">LATEST TRAILERS</a></li>
+        <li><a href="{% url 'movie_app:commingsoon' %}">COMMING SOON</a></li>
+        <li><a href="{% url 'movie_app:intheater' %}">IN THEATER</a></li>
+        <li><a href="{% url 'movie_app:out_of_theater' %}">OUT OF THEATER</a></li>
+
+      </ul>
+      <div id="search">
+        <form method="GET" action="{% url 'movie_app:search_movies' %}" accept-charset="utf-8">
+          <label for="search-field">SEARCH</label>
+          <input type="text" name="q" value="" id="search-field" class="blink search-field"  />
+          <input type="submit" value="GO!" class="search-button" />
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="main">
+    <div id="content">
+      <div class="box">
+        <div class="head">
+          <h2>LATEST TRAILERS</h2>
+          <p class="text-right"><a href="#">See all</a></p>
+        </div>
+
+        <!-- <tr>
 {% for movie in movies %}
-    <h2>{{ movie.name }}</h2>
+
+<td><h2>{{ movie.name }}</h2>
     <p>{{ movie.actor }}</p>
     <p>{{ movie.description }}</p>
-    <img src="{{ movie.poster.url }}" alt="{{ movie.name }}">
+    <img src="{{ movie.poster.url }}" alt="{{ movie.name }}"></td>
+
 {% endfor %}
+
+</tr> -->
+
+{% for movie in movies %}
+
+<div class="movie">
+    <div class="movie-image"> <span class="play"><span class="name">{{ movie.name }}</span></span> <a href="#"><img src="{{ movie.poster.url }}" alt="{{ movie.name }}"></a> </div>
+    <p class="name">{{ movie.name }}</p>
+    <p class="name">{{ movie.actor }}</p>
+    <p class="name">{{ movie.description}}</p>
+    <div class="rating">
+      <p>RATING</p>
+      <div class="stars">
+        <div class="stars-in"> </div>
+      </div>
+      <span class="comments">12</span> </div>
+  </div>
+  {% endfor %}
+
+<div class="cl">&nbsp;</div>
+</div>
+<div id="footer">
+  <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+  <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
+  <div style="clear:both;"></div>
+</div>
+</div>
+<!-- END PAGE SOURCE -->
+</body>
+</html>

@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,17 +8,44 @@
 <script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery-func.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/ie6.css' %}" type="text/css" media="all" />
+<style>
+    .table-container {
+        width: 90%;
+        margin: auto;
+        overflow-x: auto;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+    
+    .styled-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;  /* Adds space between rows */
+        margin: 25px 0;
+        font-size: 18px;
+        text-align: left;
+        border: 1px solid #dddddd;
+    }
+    
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+</style>
 </head>
 <body>
 <!-- START PAGE SOURCE -->
 <div id="shell">
   <div id="header">
-    <h1 id="logo"><a href="{% url 'movie_app:index' %}">MovieHunter</a></h1>
+    <h1 id="logo"><a href="#">MovieHunter</a></h1>
     <div class="social"> <span>FOLLOW US ON:</span>
       <ul>
         <li><a class="twitter" href="#">twitter</a></li>
         <li><a class="facebook" href="#">facebook</a></li>
-        <li><a class="vimeo" href="#">video</a></li>
+        <li><a class="vimeo" href="#">vimeo</a></li>
         <li><a class="rss" href="#">rss</a></li>
       </ul>
     </div>
@@ -69,62 +95,36 @@
           <p class="text-right"><a href="#">See all</a></p>
         </div>
 
+   
+        <form method="post" action="{% url 'movie_app:deleteuser' %}">
+          {% csrf_token %}
 
-<form action="/login/" method="post" >
-  <table>
-{% csrf_token %}
-<tr><td></td><td><h1>LOGIN</h1></td></tr>
-<tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr><tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr><tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-<tr><td>
-    <h4> Username</h4></td><td><input type="text" name="username" placeholder="Enter your  username"></td><br></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td><h4>Password</h4></td><td><input type="password" name="password" placeholder="Enter the password"></td><br></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td><input type="submit"></td></tr>
-{% if message %}
-<tr><td><p>{{ message }}</p></td></tr>
-{% endif %}
+        <div class="table-container">
+            <h1>User Details</h1>
+
+        <table class="styled-table">
+
+            <tr><td><h2>Username</h2></td><td><h2>First Name</h2></td><td><h2> Last Name</h2></td><td><h2>Email</h2></td>  <td>Delete User</td></tr>
+        {% for item in user %}
+
+      
+            <tr><td>{{item.username}}</td><td>{{item.first_name}}</td><td>{{item.last_name}}</td><td>{{item.email}}</td><td><button type="submit" name="delete" value="{{ item.id }}">DELETE</button></td>
+            </tr>
+       
+        
+          {% endfor %}
+    </table>
+</div>
 </form>
-
-</table>
-<table>
-
-<tr><td>If you don't have account <a href="{% url 'movie_app:registrations' %}"><button type="button">REGISTER</button></a></td></tr><br>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-
-<tr><td>Admin login <a href="{% url 'movie_app:admin_login' %}"><button type="button">ADMIN LOGIN</button></a></td></tr>
-
-
-</table>
-<div class="cl">&nbsp;</div>
-</div>
-<div id="footer">
-  <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
-  <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
-  <div style="clear:both;"></div>
-</div>
-</div>
-<!-- END PAGE SOURCE -->
-</body>
-</html>
+        
+        <div class="cl">&nbsp;</div>
+    </div>
+    <div id="footer">
+      <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+      <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
+      <div style="clear:both;"></div>
+    </div>
+    </div>
+    <!-- END PAGE SOURCE -->
+    </body>
+    </html>

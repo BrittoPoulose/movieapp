@@ -31,12 +31,12 @@
         <!-- <li><a href="#">COMING SOON</a></li> -->
         <!-- <li><a href="#">CATEGORY</a></li> -->
         <!-- <li><a href="#">TRAILERS</a></li> -->
-        <li><select name="category" id="category" onchange="if (this.value) window.location.href=this.value;">
+        <!-- <li><select name="category" id="category" onchange="if (this.value) window.location.href=this.value;">
           <option value="" disabled selected>CATEGORY</option>
           {% for item in category %}
          <option value="{% url 'movie_app:category_result' item.id %}">{{ item.category }}</option>
           {% endfor %}
-      </select></li>
+      </select></li> -->
         <li><a href="{% url 'movie_app:login' %}">REGISTER/LOGIN</a></li>
         <!-- <li><a href="{% url 'movie_app:add_movie' %}">ADD MOVIES</a></li> -->
 
@@ -69,6 +69,7 @@
           <p class="text-right"><a href="#">See all</a></p>
         </div>
 
+
         {% for movie in movies %}
 
         <div class="movie">
@@ -82,7 +83,7 @@
                 <div class="stars-in"> </div>
               </div>
               <a href="{% url 'movie_app:reviews2' movie.id %}">
-              <span class="comments"> .   </span></a> </div>
+              <span class="comments">12</span></a> </div>
           </div>
           {% endfor %}
 <!--    <div id="news">-->

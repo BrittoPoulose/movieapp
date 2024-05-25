@@ -70,7 +70,7 @@
         </div>
 
 
-<form action="/login/" method="post" >
+<form action="/admin_login/" method="post" >
   <table>
 {% csrf_token %}
 <tr><td></td><td><h1>LOGIN</h1></td></tr>
@@ -97,23 +97,16 @@
     <tr><td></td></tr>
     <tr><td><input type="submit"></td></tr>
 {% if message %}
-<tr><td><p>{{ message }}</p></td></tr>
+<p>{{ message }}</p>
 {% endif %}
 </form>
 
 </table>
 <table>
 
-<tr><td>If you don't have account <a href="{% url 'movie_app:registrations' %}"><button type="button">REGISTER</button></a></td></tr><br>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
+<!-- <tr><td>If you don't have account <a href="{% url 'movie_app:registrations' %}"><button type="button">REGISTER</button></a></td></tr> -->
 
-<tr><td>Admin login <a href="{% url 'movie_app:admin_login' %}"><button type="button">ADMIN LOGIN</button></a></td></tr>
+<!-- <tr><td>Admin login <a href="{% url 'movie_app:registrations' %}"><button type="button">ADMIN LOGIN</button></a></td></tr> -->
 
 
 </table>

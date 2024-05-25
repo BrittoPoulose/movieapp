@@ -9,6 +9,33 @@
 <script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery-func.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/ie6.css' %}" type="text/css" media="all" />
+<style>
+    .table-container {
+        width: 90%;
+        margin: auto;
+        overflow-x: auto;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+    
+    .styled-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;  /* Adds space between rows */
+        margin: 25px 0;
+        font-size: 18px;
+        text-align: left;
+        border: 1px solid #dddddd;
+    }
+    
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+</style>
 </head>
 <body>
 <!-- START PAGE SOURCE -->
@@ -31,12 +58,12 @@
         <!-- <li><a href="#">COMING SOON</a></li> -->
         <!-- <li><a href="#">CATEGORY</a></li> -->
         <!-- <li><a href="#">TRAILERS</a></li> -->
-        <li><select name="category" id="category" onchange="if (this.value) window.location.href=this.value;">
+        <!-- <li><select name="category" id="category" onchange="if (this.value) window.location.href=this.value;">
           <option value="" disabled selected>CATEGORY</option>
           {% for item in category %}
          <option value="{% url 'movie_app:category_result' item.id %}">{{ item.category }}</option>
           {% endfor %}
-      </select></li>
+      </select></li> -->
         <li><a href="{% url 'movie_app:login' %}">REGISTER/LOGIN</a></li>
         <!-- <li><a href="{% url 'movie_app:add_movie' %}">ADD MOVIES</a></li> -->
 
@@ -69,22 +96,20 @@
           <p class="text-right"><a href="#">See all</a></p>
         </div>
 
-        {% for movie in movies %}
+    <div class="table-container">
+            <h1>User Details</h1>
+        <table class="styled-table">
 
-        <div class="movie">
-            <div class="movie-image"> <span class="play"><span class="name">{{ movie.name }}</span></span> <a href="#"><img src="{{ movie.poster.url }}" alt="{{ movie.name }}"></a> </div>
-            <p class="name">{{ movie.name }}</p>
-            <p class="name">{{ movie.actor }}</p>
-            <p class="name">{{ movie.description}}</p>
-            <div class="rating">
-              <p>RATING</p>
-              <div class="stars">
-                <div class="stars-in"> </div>
-              </div>
-              <a href="{% url 'movie_app:reviews2' movie.id %}">
-              <span class="comments"> .   </span></a> </div>
-          </div>
+            <tr><td><h2>Username</h2></td><td><h2>First Name</h2></td><td><h2> Last Name</h2></td><td><h2>Email</h2></td></tr>
+        {% for item in user %}
+
+      
+            <tr><td>{{item.username}}</td><td>{{item.first_name}}</td><td>{{item.last_name}}</td><td>{{item.email}}</td></tr>
+       
+        
           {% endfor %}
+    </table>
+</div>
 <!--    <div id="news">-->
 <!--      <div class="head">-->
 <!--        <h3>NEWS</h3>-->

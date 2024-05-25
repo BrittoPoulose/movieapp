@@ -69,62 +69,21 @@
           <p class="text-right"><a href="#">See all</a></p>
         </div>
 
-
-<form action="/login/" method="post" >
-  <table>
-{% csrf_token %}
-<tr><td></td><td><h1>LOGIN</h1></td></tr>
-<tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr><tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr><tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-<tr><td>
-    <h4> Username</h4></td><td><input type="text" name="username" placeholder="Enter your  username"></td><br></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td><h4>Password</h4></td><td><input type="password" name="password" placeholder="Enter the password"></td><br></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td><input type="submit"></td></tr>
-{% if message %}
-<tr><td><p>{{ message }}</p></td></tr>
-{% endif %}
-</form>
-
-</table>
-<table>
-
-<tr><td>If you don't have account <a href="{% url 'movie_app:registrations' %}"><button type="button">REGISTER</button></a></td></tr><br>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-
-<tr><td>Admin login <a href="{% url 'movie_app:admin_login' %}"><button type="button">ADMIN LOGIN</button></a></td></tr>
+<center><h1>Successfully {% if message %}
+    {{ message }}
+    {% endif %}</h1></center>
+<center><a href="{% url 'movie_app:adminpage' %}">GO FORWARD</a></center>
 
 
-</table>
-<div class="cl">&nbsp;</div>
-</div>
-<div id="footer">
-  <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
-  <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
-  <div style="clear:both;"></div>
-</div>
-</div>
-<!-- END PAGE SOURCE -->
-</body>
-</html>
+
+        <div class="cl">&nbsp;</div>
+    </div>
+    <div id="footer">
+      <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+      <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+  <!-- END PAGE SOURCE -->
+  </body>
+  </html>

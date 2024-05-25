@@ -70,54 +70,17 @@
         </div>
 
 
-<form action="/login/" method="post" >
-  <table>
-{% csrf_token %}
-<tr><td></td><td><h1>LOGIN</h1></td></tr>
-<tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr><tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr><tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-<tr><td>
-    <h4> Username</h4></td><td><input type="text" name="username" placeholder="Enter your  username"></td><br></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td><h4>Password</h4></td><td><input type="password" name="password" placeholder="Enter the password"></td><br></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td><input type="submit"></td></tr>
-{% if message %}
-<tr><td><p>{{ message }}</p></td></tr>
-{% endif %}
-</form>
+<table><tr class="head">
+    <td><a href="{% url 'movie_app:add_category' %}"><button type="button">ADD CATEGORY</button></a></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    <td><a href="{% url 'movie_app:delete_category' %}"><button type="button">DELETE CATEGORY</button></a></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    <td><a href="{% url 'movie_app:viewuser' %}"><button type="button">VIEW USER</button></a></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    <td><a href="{% url 'movie_app:deleteuser' %}"><button type="button">DELETE USER</button></a></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 
-</table>
-<table>
-
-<tr><td>If you don't have account <a href="{% url 'movie_app:registrations' %}"><button type="button">REGISTER</button></a></td></tr><br>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-
-<tr><td>Admin login <a href="{% url 'movie_app:admin_login' %}"><button type="button">ADMIN LOGIN</button></a></td></tr>
+</tr></table>
 
 
-</table>
-<div class="cl">&nbsp;</div>
+
+        <div class="cl">&nbsp;</div>
 </div>
 <div id="footer">
   <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>

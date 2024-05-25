@@ -70,61 +70,71 @@
         </div>
 
 
-<form action="/login/" method="post" >
-  <table>
-{% csrf_token %}
-<tr><td></td><td><h1>LOGIN</h1></td></tr>
-<tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr><tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr><tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-<tr><td>
-    <h4> Username</h4></td><td><input type="text" name="username" placeholder="Enter your  username"></td><br></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td><h4>Password</h4></td><td><input type="password" name="password" placeholder="Enter the password"></td><br></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td><input type="submit"></td></tr>
-{% if message %}
-<tr><td><p>{{ message }}</p></td></tr>
-{% endif %}
-</form>
 
-</table>
-<table>
+        <center><h1>UPDATE MOVIES</h1></center>
+        <form method="post" enctype="multipart/form-data" >
+          {% csrf_token %}
+          <table>
+            <tr><td>
+          <label for="id_name">Name:</label></td>
+          <td>
+          <input type="text" id="id_name" name="name" maxlength="100" value="{{ movie.name }}" required></td>
+        </tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+  
+        <tr><td>
+          <label for="id_actor">Actor:</label></td><td>
+          <input type="text" id="id_actor" name="actor" maxlength="100"  value="{{ movie.actor }}" required></td>
+        </tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td>
+          <label for="id_description">Description:</label></td>
+          <td>
+          <textarea id="id_description" name="description"    required>{{ movie.description}}</textarea></td>
+        </tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td>
+          <label for="id_poster">Poster:</label></td><td>
+          <input type="file" id="id_poster" name="poster"  accept="image/*" required></td>
+        </tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td><label for="id_poster" >Status</label></td><td>
+        <select id="theater" name="theater"  value="{{ movie.status }}">
+          <option value="CS">Coming Soon</option>
+          <option value="IT">In Theater</option>
+          <option value="OT">Out of Theater</option>
+      </select>
+    </td></tr><br>
+      <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td>
+         
+          <button type="submit">Submit</button></td></tr>
+        </table>
+      </form>
+  
 
-<tr><td>If you don't have account <a href="{% url 'movie_app:registrations' %}"><button type="button">REGISTER</button></a></td></tr><br>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-<tr><td></td></tr>
-
-<tr><td>Admin login <a href="{% url 'movie_app:admin_login' %}"><button type="button">ADMIN LOGIN</button></a></td></tr>
 
 
-</table>
-<div class="cl">&nbsp;</div>
-</div>
-<div id="footer">
-  <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
-  <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
-  <div style="clear:both;"></div>
-</div>
-</div>
-<!-- END PAGE SOURCE -->
-</body>
-</html>
+
+
+        <div class="cl">&nbsp;</div>
+    </div>
+    <div id="footer">
+      <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+      <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
+      <div style="clear:both;"></div>
+    </div>
+    </div>
+    <!-- END PAGE SOURCE -->
+    </body>
+    </html>
